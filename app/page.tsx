@@ -8,6 +8,7 @@ import BookmarkForm from '@/components/BookmarkForm';
 import BookmarkList from '@/components/BookmarkList';
 import TagFilter from '@/components/TagFilter';
 import SortControls from '@/components/SortControls';
+import ThemeToggle from '@/components/ThemeToggle';
 import { Plus, Bookmark as BookmarkIcon } from 'lucide-react';
 
 export default function Home() {
@@ -179,54 +180,64 @@ export default function Home() {
               <BookmarkIcon className="h-10 w-10 text-primary" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-foreground bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold gradient-text">
                 LinkVault
               </h1>
               <p className="text-muted-foreground text-lg mt-2">
                 Secure vault for your bookmarks with advanced organization
               </p>
             </div>
+            <ThemeToggle />
           </div>
         </div>
 
-        {/* Stats Cards */}
+        {/* Enhanced Stats Cards */}
         <div className="mb-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <BookmarkIcon className="h-5 w-5 text-primary" />
+          <div className="group relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative flex items-center gap-4">
+              <div className="p-3 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-xl border border-primary/30 shadow-lg group-hover:scale-110 transition-all duration-300">
+                <BookmarkIcon className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">{bookmarks.length}</div>
-                <div className="text-sm text-muted-foreground">Total Bookmarks</div>
+                <div className="text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{bookmarks.length}</div>
+                <div className="text-sm text-muted-foreground font-medium">Total Bookmarks</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-500/10 rounded-lg">
-                <svg className="h-5 w-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="group relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative flex items-center gap-4">
+              <div className="p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl border border-purple-500/30 shadow-lg group-hover:scale-110 transition-all duration-300">
+                <svg className="h-6 w-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">{allTags.length}</div>
-                <div className="text-sm text-muted-foreground">Unique Tags</div>
+                <div className="text-3xl font-bold text-foreground group-hover:text-purple-500 transition-colors duration-300">{allTags.length}</div>
+                <div className="text-sm text-muted-foreground font-medium">Unique Tags</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-500/10 rounded-lg">
-                <svg className="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="group relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative flex items-center gap-4">
+              <div className="p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl border border-green-500/30 shadow-lg group-hover:scale-110 transition-all duration-300">
+                <svg className="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">{filteredAndSortedBookmarks.length}</div>
-                <div className="text-sm text-muted-foreground">Filtered Results</div>
+                <div className="text-3xl font-bold text-foreground group-hover:text-green-500 transition-colors duration-300">{filteredAndSortedBookmarks.length}</div>
+                <div className="text-sm text-muted-foreground font-medium">Filtered Results</div>
               </div>
             </div>
           </div>
@@ -338,24 +349,24 @@ export default function Home() {
 
 
 
-        {/* Storage Status */}
+        {/* Enhanced Storage Status */}
         {isLoaded && (
-          <div className="mb-6 p-4 bg-gradient-to-r from-blue-50/50 to-purple-50/50 border border-blue-200/50 rounded-xl">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg">
-                <svg className="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="mb-6 p-6 bg-gradient-to-br from-blue-50/30 to-purple-50/30 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200/30 dark:border-blue-700/30 rounded-2xl backdrop-blur-sm">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl border border-blue-500/30 shadow-lg">
+                <svg className="h-5 w-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                 </svg>
               </div>
               <div className="flex-1">
-                <div className="text-sm font-medium text-blue-900">
+                <div className="text-sm font-bold text-blue-900 dark:text-blue-100">
                   Secure Storage: {storageProvider || 'Loading...'}
                 </div>
-                <div className="text-xs text-blue-700">
+                <div className="text-xs text-blue-700 dark:text-blue-300 mt-1">
                   Your bookmarks are automatically saved with multiple fallback options. Use Export/Import for additional backup safety.
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-xs text-blue-600">
+              <div className="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 bg-blue-100/50 dark:bg-blue-900/30 px-3 py-2 rounded-lg">
                 <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>

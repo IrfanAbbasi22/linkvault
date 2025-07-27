@@ -49,18 +49,29 @@ export default function BookmarkForm({
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-background/95 backdrop-blur-md rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-border/50">
-        <div className="flex items-center justify-between p-6 border-b border-border/50">
-          <h2 className="text-xl font-semibold text-foreground">
-            {initialData ? 'Edit Bookmark' : 'Add New Bookmark'}
-          </h2>
-          <button
-            onClick={onCancel}
-            className="text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-secondary"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
+      <div className="bg-gradient-to-br from-background/95 to-background/90 backdrop-blur-md rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-border/50 relative overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5" />
+        
+        <div className="relative">
+          <div className="flex items-center justify-between p-6 border-b border-border/50">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-xl">
+                <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                </svg>
+              </div>
+              <h2 className="text-xl font-bold text-foreground">
+                {initialData ? 'Edit Bookmark' : 'Add New Bookmark'}
+              </h2>
+            </div>
+            <button
+              onClick={onCancel}
+              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-xl transition-all duration-300 hover:scale-110"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Title */}
@@ -166,6 +177,7 @@ export default function BookmarkForm({
             </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );
